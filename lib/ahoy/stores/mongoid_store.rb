@@ -31,7 +31,13 @@ module Ahoy
 
         yield(event) if block_given?
 
+        debug "EVENT: #{event.inspect}"
+        debug "EVENT VALID: #{event.valid?}"
+        debug "EVENT ERRORS: #{event.errors.inspect}"
+
         event.upsert
+
+        debug "EVENT PERSISTED: #{event.persisted?}"
       end
 
       def visit
@@ -57,6 +63,10 @@ module Ahoy
         else
           token
         end
+      end
+
+      def debug(message)
+        Rails.logger.debug { "[ahoy] #{message}" }
       end
     end
   end
