@@ -10,6 +10,8 @@ module Ahoy
     end
 
     def track(name, properties = {}, options = {})
+      debug "Tracking Event"
+
       if exclude?
         debug "Event excluded"
       elsif missing_params?
@@ -28,6 +30,8 @@ module Ahoy
     end
 
     def track_visit(options = {})
+      debug "Tracking Visit"
+
       if exclude?
         debug "Visit excluded"
       elsif missing_params?
@@ -49,6 +53,8 @@ module Ahoy
     end
 
     def authenticate(user)
+      debug "Authenticating user"
+
       if exclude?
         debug "Authentication excluded"
       else
