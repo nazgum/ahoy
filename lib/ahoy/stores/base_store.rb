@@ -73,7 +73,8 @@ module Ahoy
 
       def geocode(visit)
         if Ahoy.geocode == :async
-          Ahoy::GeocodeJob.set(queue: Ahoy.job_queue).perform_later(visit)
+          #Ahoy::GeocodeJob.set(queue: Ahoy.job_queue).perform_later(visit)
+          Ahoy::GeocodeJob.set(queue: Ahoy.job_queue).perform_later(visit.id.to_s)  # for mongoid
         end
       end
 
